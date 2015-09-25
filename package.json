@@ -1,0 +1,29 @@
+{
+  "name": "location",
+  "version": "1.0.0",
+  "description": "IP to Country location service",
+  "main": "location.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/manuelmorales/location.git"
+  },
+  "keywords": [
+    "location",
+    "microservice",
+    "express",
+    "ip"
+  ],
+  "author": "Manuel Morales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuelmorales/location/issues"
+  },
+  "homepage": "https://github.com/manuelmorales/location"
+}
