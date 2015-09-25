@@ -25,7 +25,7 @@
     "ip"
   ],
   "author": "Manuel Morales",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/manuelmorales/location/issues"
   },
