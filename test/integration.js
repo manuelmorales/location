@@ -2,6 +2,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var request = require('supertest');
 var app = require('../location.js');
+var assert = chai.assert;
 
 describe('GET /ips/:ip', function () {
 	var path = '/ips/127.0.0.1';
@@ -13,10 +14,18 @@ describe('GET /ips/:ip', function () {
 				.expect(200)
 		});
 
-		it('returns the IP', function () {
+		it('returns the IP', function (done) {
 			request(app)
 			.get(path)
-			.expect('127.0.0.1')
+			.end(function (error, response) {
+				if (error) { done(error) };
+
+				body = JSON.parse(response.text);
+
+				assert.equal(body.host,'127.0.0.1');
+
+				done();
+			})
 		});
 	});
 });
