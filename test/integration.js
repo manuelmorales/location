@@ -8,10 +8,18 @@ describe('GET /ips/:ip', function () {
 	var path = '/ips/127.0.0.1';
 
 	describe('when successful', function () {
-		it('has status 200 OK', function () {
+		it('has status 200 OK', function (done) {
 			request(app)
 				.get(path)
 				.expect(200)
+				.end(done);
+		});
+
+		it('returns JSON', function (done) {
+			request(app)
+				.get(path)
+				.expect('Content-Type', /json/)
+				.end(done);
 		});
 
 		it('returns the IP', function (done) {
