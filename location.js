@@ -23,7 +23,7 @@ app.get('/ips/:ip', function (req, res) {
 			'host': ip,
 			'error': "The address " + ip + " is not in the database."
 		});
-	};
+	}
 });
 
 module.exports = app;

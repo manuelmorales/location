@@ -28,7 +28,7 @@ describe('GET /ips/:ip', function () {
 			request(app)
 			.get(path)
 			.end(function (error, response) {
-				if (error) { done(error) };
+				if (error) { done(error); }
 
 				body = JSON.parse(response.text);
 
@@ -40,7 +40,7 @@ describe('GET /ips/:ip', function () {
 				});
 
 				done();
-			})
+			});
 		});
 	});
 
@@ -66,7 +66,7 @@ describe('GET /ips/:ip', function () {
 			request(app)
 			.get(path)
 			.end(function (error, response) {
-				if (error) { done(error) };
+				if (error) { done(error); }
 
 				body = JSON.parse(response.text);
 
@@ -74,7 +74,7 @@ describe('GET /ips/:ip', function () {
 				expect(body.error).to.be.a('string');
 
 				done();
-			})
+			});
 		});
 	});
 });
