@@ -2,8 +2,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-curl');
+	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.registerTask('default', ['jshint', 'mochaTest']);
+	grunt.registerTask('test', ['mochaTest']);
+	grunt.registerTask('bootstrap', ['curl:geolite', 'shell:unzip_geolite']);
 
 	grunt.initConfig({
 		watch: {
@@ -13,9 +17,11 @@ module.exports = function (grunt) {
 				options: {spawn: false}
 			}
 		},
+
 		jshint: {
 			all: ['*.js', 'lib/*.js', 'test/*.js']
 		},
+
 		mochaTest: {
 			test: {
 				options: {
@@ -23,6 +29,17 @@ module.exports = function (grunt) {
 				},
 				src: ['test/*.js']
 			}
+		},
+
+		curl: {
+			geolite: {
+				dest: 'vendor/GeoLite2-Country.mmdb.gz',
+				src: 'http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz'
+			}
+		},
+
+		shell: {
+			unzip_geolite: {command: 'gunzip vendor/GeoLite2-Country.mmdb.gz'}
 		}
 	});
 };
