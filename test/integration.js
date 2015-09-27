@@ -1,11 +1,13 @@
 var chai = require('chai');
 var expect = chai.expect;
-var request = require('supertest');
-var app = require('../location.js');
 var assert = chai.assert;
+var request = require('supertest');
+
+var app = require('../location.js');
 
 describe('GET /ips/:ip', function () {
-	var path = '/ips/127.0.0.1';
+	var ip = '8.8.8.8';
+	var path = '/ips/' + ip;
 
 	describe('when successful', function () {
 		it('has status 200 OK', function (done) {
@@ -22,7 +24,7 @@ describe('GET /ips/:ip', function () {
 				.end(done);
 		});
 
-		it('returns the IP', function (done) {
+		it('returns the geographical information', function (done) {
 			request(app)
 			.get(path)
 			.end(function (error, response) {
@@ -30,7 +32,12 @@ describe('GET /ips/:ip', function () {
 
 				body = JSON.parse(response.text);
 
-				assert.equal(body.host,'127.0.0.1');
+				assert.equal(body.host,'8.8.8.8');
+				assert.deepEqual(body.country, {
+					'name': "United States",
+					'geoname_id': 6252001,
+					'iso_code': "US"
+				});
 
 				done();
 			})

@@ -1,8 +1,19 @@
 var express = require('express');
 var app = express();
+var MMDBReader = require('mmdb-reader');
+var reader = new MMDBReader('./vendor/GeoLite2-Country.mmdb');
 
 app.get('/ips/:ip', function (req, res) {
-	res.send({'host': req.params.ip});
+	var ip = req.params.ip;
+	var record = reader.lookup(ip);
+	res.send({
+		'host': ip,
+		'country': {
+			'iso_code': record.country.iso_code,
+			'geoname_id': record.country.geoname_id,
+			'name': record.country.names.en
+		}
+	});
 });
 
 module.exports = app;
