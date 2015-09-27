@@ -3,7 +3,7 @@ var expect = chai.expect;
 var assert = chai.assert;
 var request = require('supertest');
 
-var app = require('../location.js');
+var app = require('../lib/location.js');
 
 describe('GET /ips/:ip', function () {
 	describe('when successful', function () {

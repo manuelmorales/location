@@ -4,11 +4,11 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['jshint']);
 	grunt.initConfig({
 		jshint: {
-			all: ['Gruntfile.js', '*.js', 'test/*.js']
+			all: ['*.js', 'lib/*.js', 'test/*.js']
 		},
 		watch: {
 			scripts: {
-				files: ['Gruntfile.js', '*.js', 'test/*.js'],
+				files: ['*.js', 'lib/*.js', 'test/*.js'],
 				tasks: ['jshint'],
 				options: {spawn: false}
 			}

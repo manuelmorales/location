@@ -1,4 +1,4 @@
-var app = require('./location');
+var app = require('./lib/location');
 
 var server = app.listen(3000, function () {
 	var host = server.address().address;
